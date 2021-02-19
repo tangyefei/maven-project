@@ -30,7 +30,7 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "scp -i /usr/local/aliyun-staging-secret-token.pem **/target/*.war root@${params.tomcat_dev}:/var/lib/tomcat/webapps"
+                        sh "scp -o StrictHostKeyChecking=no -i /usr/local/aliyun-staging-secret-token.pem **/target/*.war root@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
             }
